@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void menu(){
+void menu(int* opcao){
     printf("+------------------------------------+\n");
     printf("|             CALCULADORA             |\n");
     printf("+------------------------------------+\n\n");
@@ -26,27 +26,42 @@ void menu(){
     printf("--------------------------------------\n\n");
  
     printf(">> Escolha uma opção: ");
+    scanf("%d", opcao);
     
 }
 
-void soma(float a, float b, float* result){
+void requisicao(float *a, float *b){
+    printf("\nDigite a: ");
+    scanf("%f", &a);
+    printf("\nDigite b: ");
+    scanf("%f", &b);
+}
+void soma(float* resultado){
+    float a,b;
+    requisicao(&a, &b);
     *resultado = a+b;
 }
 
-void subtracao(float a, float b, float* result){
+void subtracao(float* resultado){
+    float a,b;
+    
     *resultado = a-b;
 }
 
 int main(){
     float* resultado = calloc(1,sizeof(float));
-    int execucao = 1;
+    int execucao = 1, opcao = 0;
+
     while (execucao){
-        menu();
+        menu(&opcao);
         
-        switch (expression)
+        switch (opcao)
         {
-        case constant expression:
-            /* code */
+        case 1:
+            soma(&resultado);
+            break;
+        case 2:
+            subtracao(&resultado);
             break;
         
         default:
