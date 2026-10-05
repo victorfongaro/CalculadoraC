@@ -1,16 +1,33 @@
 #include "headers.h"
 
-
-int main(){
-    Operacao* operacao = malloc(1* sizeof(Operacao));
-    int execucao = 1, opcao = 0;
-    if (resultado == NULL){
-        printf("Erro ao iniciar calculadora!!!!!!");
+int main(void) {
+    int opcao = -1;
+    int execucao = 1;
+    
+    Operacao* operacao_atual = (Operacao*)malloc(sizeof(Operacao));
+    if (operacao_atual == NULL) {
+        printf("Erro de alocação de memória!\n");
         return 1;
     }
-    while (execucao){
+    Operacao* operacaoHistorico = recuperarHistorico();
+    operacao_atual->anterior = NULL;
+
+    while (execucao) {
         menu(&opcao);
-        chamar(opcao, resultado, &execucao);
+        
+        if (opcao != -1 && opcao != 20) {
+            chamar(opcao, operacao_atual, &execucao, operacaoHistorico);
+            
+            if (execucao) {
+                printf("\nPressione ENTER para continuar...");
+                getchar(); // Limpa o buffer anterior
+                getchar(); // Aguarda o ENTER
+                system("clear || cls"); // Limpa o terminal no Linux ou Windows
+            }
+        }
     }
+
+    // Libera a memória antes de sair
+    free(operacao_atual);
     return 0;
 }

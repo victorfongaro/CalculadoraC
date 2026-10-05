@@ -1,11 +1,48 @@
 #include "headers.h"
 
-void gravarHistorico(FILE* arquivo){
-    
+#define QTD_HISTORICO 10
+
+void gravarHistorico(Operacao* operacao){
+    FILE* arquivo = fopen("historico.csv","a");
+    if (arquivo == NULL){
+        return;
+    }
+    if (operacao == NULL){
+        return;
+    }
+
+    fclose(arquivo);
 }
 
 
-void recuperarHistorico(FILE* arquivo){
+Operacao* recuperarHistorico(void){
+    FILE* arquivo = fopen("historico.csv","a");
+    if (arquivo == NULL){
+        return;
+    }
+
+    Operacao* inicio = NULL; 
+    Operacao temp;
+    int historico = 0;
+
+    while (fread(&temp, sizeof(Operacao), 1, arquivo) == 1 && historico < QTD_HISTORICO) {
+        Operacao* novo_no = (Operacao*)malloc(sizeof(Operacao));
+        if (novo_no == NULL) {
+            printf("Erro de alocação de memória ao carregar histórico.\n");
+            break;
+        }
+
+        novo_no->num01 = temp.num01;
+        novo_no->num02 = temp.num02;
+        novo_no->tipo  = temp.tipo;
+        
+        novo_no->anterior = inicio; 
+        inicio = novo_no;        
+        
+        historico++;
+}
+    return inicio;
+    fclose(arquivo);
 
 }
 
