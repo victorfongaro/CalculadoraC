@@ -1,10 +1,6 @@
 #include "headers.h"
 
-#define QTD_HISTORICO 10
 
-FILE* abrirArquivo(char st[2]){
-    
-}
 
 
 int gravarHistorico(Operacao* operacao){

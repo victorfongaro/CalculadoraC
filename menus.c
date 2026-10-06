@@ -1,7 +1,6 @@
 #include "headers.h"
 
-static void menuEspecial(int* opcao);
-static void sair(int *execucao);
+
 
 void menu(int* opcao) {
     printf("+------------------------------------+\n");
@@ -13,8 +12,6 @@ void menu(int* opcao) {
     printf(" 3.  Multiplicação\n");
     printf(" 4.  Divisão\n");
     printf(" 5.  Exponenciação\n");
-    printf(" 6.  Raiz quadrada\n");
-    printf(" 7.  Soma de n valores\n");
     printf("20.  Calculadora Especial\n");
     printf("--------------------------------------\n");
     printf(" 0.  Sair\n");
@@ -33,6 +30,8 @@ void menu(int* opcao) {
 
 static void menuEspecial(int* opcao) {
     printf("\n--- CALCULADORA ESPECIAL ---\n");
+    printf(" 6.  Raiz quadrada\n");
+    printf(" 7.  Soma de n valores\n");
     printf(" 8.  Cálculo da Sequência de Fibonacci\n");
     printf(" 9.  Área do círculo\n");
     printf("10.  Área do retângulo\n");
@@ -51,8 +50,8 @@ void chamar(int opcao, Operacao* operacao, int* execucao, Operacao* operacaoHist
         case 3: multiplicacao(operacao); break;
         case 4: divisao(operacao); break;
         case 5: exponenciacao(operacao); break;
-        case 6: raizQuadrada(operacao); break;
         // Operações especiais chamadas sem parâmetros
+        case 6: raizQuadrada(); break;
         case 7: somaNvalores(); break;
         case 8: sequenciaFibonnatti(); break;
         case 9: areaCirculo(); break;

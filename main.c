@@ -1,10 +1,11 @@
 #include "headers.h"
 
 int main(void) {
+    setlocale(LC_ALL, "");
     int opcao = -1;
     int execucao = 1;
     
-    Operacao* operacao_atual = (Operacao*)malloc(sizeof(Operacao));
+    Operacao* operacao_atual = malloc(1*sizeof(Operacao));
     if (operacao_atual == NULL) {
         printf("Erro de alocação de memória!\n");
         return 1;

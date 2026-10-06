@@ -7,6 +7,11 @@
 #include <unistd.h> 
 #include <math.h>
 #include <time.h>
+#include <locale.h>
+
+#ifndef QTD_HISTORICO
+#define QTD_HISTORICO 10
+#endif
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -25,7 +30,9 @@ typedef struct Operacao {
 
 // --- Protótipos de menus.c ---
 void menu(int* opcao);
-void chamar(int opcao, Operacao* operacao, int* execucao);
+void chamar(int opcao, Operacao* operacao, int* execucao, Operacao* operacaoHistorico);
+static void menuEspecial(int* opcao);
+static void sair(int *execucao, Operacao* Historico);
 
 // --- Protótipos de operacoes.c ---
 void soma(Operacao* operacao);
@@ -33,17 +40,19 @@ void subtracao(Operacao* operacao);
 void multiplicacao(Operacao* operacao);
 void divisao(Operacao* operacao);
 void exponenciacao(Operacao* operacao);
-void raizQuadrada(Operacao* operacao);
+
 
 // --- Protótipos de operacoesEspeciais.c ---
-void somaNvalores(void);
 void sequenciaFibonnatti(void);
 void areaCirculo(void);
 void areaRetangulo(void);
 void volumeCubo(void);
 void volumeCilindro(void);
+void raizQuadrada(void);
+void somaNvalores(void);
 
 // --- Protótipos de arquivo.c ---
-void salvar_historico(double a, double b, char op, double res);
+int gravarHistorico(Operacao* operacao);
+Operacao* recuperarHistorico(void);
 
 #endif // HEADERS_H
