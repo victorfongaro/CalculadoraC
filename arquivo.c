@@ -2,21 +2,28 @@
 
 #define QTD_HISTORICO 10
 
-void gravarHistorico(Operacao* operacao){
-    FILE* arquivo = fopen("historico.csv","a");
+FILE* abrirArquivo(char st[2]){
+    
+}
+
+
+int gravarHistorico(Operacao* operacao){
+    FILE* arquivo = fopen("historico.dat","ab");
     if (arquivo == NULL){
-        return;
+        return 1;
     }
     if (operacao == NULL){
-        return;
+        fclose(arquivo);
+        return 2;
     }
-
+    fwrite(operacao, sizeof(Operacao), 1, arquivo);
     fclose(arquivo);
+    return 0;
 }
 
 
 Operacao* recuperarHistorico(void){
-    FILE* arquivo = fopen("historico.csv","a");
+    FILE* arquivo = fopen("historico.dat","rb");
     if (arquivo == NULL){
         return;
     }
