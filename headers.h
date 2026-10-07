@@ -49,7 +49,7 @@ void areaRetangulo(void);
 void volumeCubo(void);
 void volumeCilindro(void);
 void raizQuadrada(void);
-void somaNvalores(void);
+void somaNvalores(int valorInicial);
 
 // --- Protótipos de arquivo.c ---
 int gravarHistorico(Operacao* operacao);

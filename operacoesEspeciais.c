@@ -71,21 +71,21 @@ void volumeCilindro(void) {
 }
 
 void raizQuadrada(void) {
-    operacao->tipo = RAIZ;
+    double numero;
     printf("\nDigite o valor para raiz quadrada: ");
-    if (scanf("%lf", &operacao->num01) != 1 || operacao->num01 < 0) {
+    if (scanf("%lf", &numero) != 1 || numero < 0) {
         printf("Erro: valor inválido ou negativo!\n");
         return;
     }
-    operacao->num02 = 0;
-    double res = sqrt(operacao->num01);
+
+    double res = sqrt(numero);
     printf("Resultado: %.4lf\n", res);
 }
 
-void somaNvalores(void) {
+void somaNvalores(int valorInicial) {
     int total_termos;
     double valor, acumulador = 0.0;
-    char resposta;
+    char resposta = valorInicial;
 
     printf("\nDigite quantos números você quer somar: ");
     if (scanf("%d", &total_termos) != 1 || total_termos <= 0) {
@@ -98,16 +98,12 @@ void somaNvalores(void) {
         if (scanf("%lf", &valor) == 1) {
             acumulador += valor;
         }
+
     }
-
-    operacao->tipo = SOMA;
-    operacao->num01 = acumulador;
-    operacao->num02 = 0;
-
     printf("Subtotal atual: %.4lf\n", acumulador);
     printf("Deseja inserir mais termos? (S/N): ");
     scanf(" %c", &resposta);
     if (resposta == 'S' || resposta == 's') {
-        somaNvalores(operacao);
+        somaNvalores(acumulador);
     }
 }
