@@ -52,7 +52,7 @@ void chamar(int opcao, Operacao* operacao, int* execucao, Operacao* operacaoHist
         case 5: exponenciacao(operacao); break;
         // Operações especiais chamadas sem parâmetros
         case 6: raizQuadrada(); break;
-        case 7: somaNvalores(); break;
+        case 7: somaNvalores(0); break;
         case 8: sequenciaFibonnatti(); break;
         case 9: areaCirculo(); break;
         case 10: areaRetangulo(); break;

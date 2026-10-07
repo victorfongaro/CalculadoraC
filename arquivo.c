@@ -21,7 +21,7 @@ int gravarHistorico(Operacao* operacao){
 Operacao* recuperarHistorico(void){
     FILE* arquivo = fopen("historico.dat","rb");
     if (arquivo == NULL){
-        return;
+        return NULL;
     }
 
     Operacao* inicio = NULL; 
