@@ -31,10 +31,10 @@ typedef struct Operacao {
 // --- Protótipos de menus.c ---
 void menu(int* opcao);
 void chamar(int opcao, Operacao* operacao, int* execucao, Operacao* operacaoHistorico);
-static void menuEspecial(int* opcao);
-static void sair(int *execucao, Operacao* Historico);
+void menuEspecial(int* opcao);
+void sair(int *execucao, Operacao* Historico);
 
-// --- Protótipos de operacoes.c ---
+// Protótipos de operacoes.c
 void soma(Operacao* operacao);
 void subtracao(Operacao* operacao);
 void multiplicacao(Operacao* operacao);
@@ -42,7 +42,7 @@ void divisao(Operacao* operacao);
 void exponenciacao(Operacao* operacao);
 
 
-// --- Protótipos de operacoesEspeciais.c ---
+// Protótipos de operacoesEspeciais.c
 void sequenciaFibonnatti(void);
 void areaCirculo(void);
 void areaRetangulo(void);
@@ -51,8 +51,9 @@ void volumeCilindro(void);
 void raizQuadrada(void);
 void somaNvalores(int valorInicial);
 
-// --- Protótipos de arquivo.c ---
+// Protótipos de arquivo.c
 int gravarHistorico(Operacao* operacao);
 Operacao* recuperarHistorico(void);
+void mostrarHistorico(Operacao* operacaoHistorico);
 
-#endif // HEADERS_H
+#endif

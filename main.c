@@ -1,5 +1,9 @@
 #include "headers.h"
 
+// Victor Fongaro - 2867060
+// Mateus Otávio da Silva - 2866978
+
+
 int main(void) {
     setlocale(LC_ALL, "");
     int opcao = -1;
@@ -18,12 +22,16 @@ int main(void) {
         
         if (opcao != -1 && opcao != 20) {
             chamar(opcao, operacao_atual, &execucao, operacaoHistorico);
+
+            if (opcao >= 1 && opcao <= 5 && gravarHistorico(operacao_atual) != 0) {
+                printf("Erro ao gravar o histórico.\n");
+            }
             
             if (execucao) {
                 printf("\nPressione ENTER para continuar...");
-                getchar(); // Limpa o buffer anterior
-                getchar(); // Aguarda o ENTER
-                system("clear || cls"); // Limpa o terminal no Linux ou Windows
+                getchar();
+                getchar();
+                system("clear || cls");
             }
         }
     }

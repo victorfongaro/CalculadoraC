@@ -28,7 +28,7 @@ void menu(int* opcao) {
     }
 }
 
-static void menuEspecial(int* opcao) {
+void menuEspecial(int* opcao) {
     printf("\n--- CALCULADORA ESPECIAL ---\n");
     printf(" 6.  Raiz quadrada\n");
     printf(" 7.  Soma de n valores\n");
@@ -58,6 +58,8 @@ void chamar(int opcao, Operacao* operacao, int* execucao, Operacao* operacaoHist
         case 10: areaRetangulo(); break;
         case 11: volumeCubo(); break;
         case 12: volumeCilindro(); break;
+        
+        case 13: mostrarHistorico(operacaoHistorico); break;
         case 0: sair(execucao, operacaoHistorico); break;
         default:
             printf("\nOpção inválida, por favor, escolha outra.\n");
@@ -66,7 +68,7 @@ void chamar(int opcao, Operacao* operacao, int* execucao, Operacao* operacaoHist
     }
 }
 
-static void sair(int *execucao,Operacao* operacaoHistorico) {
+void sair(int *execucao,Operacao* operacaoHistorico) {
     printf("\nMuito obrigado por utilizar nossa calculadora!\n\n");
     Operacao* atual = operacaoHistorico;
     Operacao* proximo;

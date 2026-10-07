@@ -1,6 +1,6 @@
 #include "headers.h"
 
-static void requisicao(double *a, double *b) {
+void requisicao(double *a, double *b) {
     printf("\nDigite o primeiro valor: ");
     if (scanf("%lf", a) != 1) *a = 0;
     printf("Digite o segundo valor: ");
